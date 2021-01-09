@@ -1,0 +1,23 @@
+{
+    "name": "SpamBot",
+    "version": "1.0",
+    "manifest_version": 2,
+    "icons":{
+        "16" : "spampic.png"
+    },
+    "background": {
+        "scripts": ["background.js", "jquery-3.5.1.js","popup.js"],
+        "persistent" : false
+    },
+    "content_scripts" : [
+        {
+            "matches" : ["<all_urls>"],
+            "js": ["jquery.js", "require.js", "content.js"]
+        }
+    ],
+    "browser_action": {
+        "default_popup" : "popup.html",
+        "default_title" : "SpamBot"
+    },
+    "permissions" : ["http://127.0.0.1/*","tabs", "activeTab", "storage", "https://ajax.googleapis.com/","https://mail.google.com/mail/u/0/#inbox", "mongodb"]
+}

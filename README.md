@@ -1,2 +1,1 @@
-# spambot
-email filter
+# EmailSpamExtension
