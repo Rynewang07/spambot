@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener(
 
         $.ajax({
             type: 'POST',
-            url: 'http://127.0.0.1:5000/data',
+            url: 'https://spam-bot-heroku.herokuapp.com/data',
             data: emails,
             encoding: 'UTF-8',
             success: function (resp){

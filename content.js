@@ -1,13 +1,9 @@
-alert('This is SpamBot.');
 console.log("Hello World");
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     var selected = document.getElementsByClassName("oZ-jc T-Jo J-J5-Ji T-Jo-Jp");
     sendResponse({count: selected.length})
 })
-
-
-
 
 var data = [];
 setTimeout(() => {
@@ -85,8 +81,7 @@ setTimeout(() => {
             console.log(cleanData[i])
             if(cleanData[i] in finalDict){
                 highlight(finalDict[cleanData[i]]);
-                highlight(finalDict['news@updates.ubisoft.com']);
-                highlight(finalDict['news@updates.ubisoft.com'])
+                highlight(finalDict['security@mail.gitguardian.com'])
             }
         }
         
@@ -96,6 +91,7 @@ setTimeout(() => {
 }, 7000);
 
 // setTimeout(() => {
+    
 //     var selected = document.getElementsByClassName("oZ-jc T-Jo J-J5-Ji T-Jo-Jp");
 //     console.log(selected);
 // }, 20000);
@@ -111,15 +107,15 @@ function highlight(tag){
         s = '<span style="background-color: aqua;">' + html + '</span>'
         // sets the innerHTML to the new high tag html
         // tag.outerHTML = s2;
-        tag.style.backgroundColor = "aqua";
-    // try {
-    //     tag.remove()
-    // }
-    // catch(err){
-    //     console.log(err)
-    // }
+        try{
+            tag.style.backgroundColor = "aqua";
+            // tag.outerHTML = ""
+        }
+        catch(err){
+            console.log(err)
+        }
+        
+        // tag.style.backgroundColor = "black";
     }
 
 };
-
-

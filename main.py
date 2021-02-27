@@ -2,7 +2,8 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS, cross_origin
 import json
 from sklearn import svm
-
+import pandas
+import pymongo
 
 db = dict()
 
@@ -10,6 +11,13 @@ app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS'] = "Content-Type"
 
+@app.route('/test', methods=["POST"])
+def sendData():
+    # print(request.get_json(force=True)['count'])
+    
+    return json.dumps('It worked')
+
+#AI MODEL STILL IN PROGRESS (WILL BE UPDATED)
 @app.route('/data', methods=["POST"])
 def example():
     email_data = request.get_json(force=True)['msg']
@@ -44,32 +52,13 @@ def example():
         if process[0] == 'flag':
             flagged.append(email['email'])
 
-
-    # link_safety = rec_model.predict([[5,2,5,2,5]])
-    # data.append([5,2,5,2,5])
-    # s.append(link_safety[0])
     
     return json.dumps(flagged)
 
 def getNum(email):
-    if "game" in email['subject']:
-        return 0
-    if "blizzard" in email['sender']:
-        return 0
-    if "nintendo" in email['sender']:
-        return 0
-    if "Ubisoft" in email['sender']:
-        return 0
-    if "ea" in email['sender']:
-        return 0
-    if "rockstargames" in email['sender']:
-        return 0
-    if "mojang" in email['sender']:
-        return 0
-    if "epicgames" in email['sender']:
-        return 0
-    if "bethsoft" in email['sender']:
-        return 0
-    return 1
+    return 0
 
-app.run(host="127.0.0.1")
+if __name__ == "__main__":
+    app.run()
+    
+# app.run(host="127.0.0.1")
